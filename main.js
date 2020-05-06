@@ -1,19 +1,70 @@
-const searchTerm = document.getElementById('searchbar').innerText;
 const searchButton = document.getElementById('searchbutton');
-const url = `https://recipepuppyproxy.herokuapp.com/api/?i=${searchTerm}`;
+const searchBar = document.getElementById('searchbar')
 
-async function goGetDataFromRecipeAPI() {
-  const result = await fetch(url);
-  const json = await result.json();
+// Trigger button on enter code from w3Schools:https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
 
-
-}
-
-goGetDataFromRecipeAPI();
+// Execute a function when the user releases a key on the keyboard
+searchBar.addEventListener("keyup", function (event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    searchButton.click();
+  }
+});
 
 
 searchButton.onclick = function (event) {
+  const searchTerm = document.getElementById('searchbar').value;
+  const url = `https://recipepuppyproxy.herokuapp.com/api/?i=${searchTerm}`;
 
+  console.log("What is my url?", url)
+
+  async function goGetDataFromRecipeAPI() {
+    const result = await fetch(url);
+    const json = await result.json();
+    let recipeArray = json.results;
+
+    console.log(recipeArray);
+
+    recipeArray.forEach(function (recipe) {
+      console.log('Recipe:', recipe.title)
+      console.log('Picture', recipe.href)
+      console.log('Ingredients', recipe.ingredients)
+
+    })
+
+    const recipeResults = document.getElementById('recipeCards')
+
+    // How to create a new element and define its design.
+    function createRecipeCard() {
+      let newRecipeCard = document.createElement("div");
+      newRecipeCard.style.maxHeight = "500px";
+      newRecipeCard.style.minHeight = "300px";
+      newRecipeCard.style.maxWidth = "80%";
+      newRecipeCard.style.minWidth = "65%";
+      // newRecipeCard.style.display = "inline-block";
+      newRecipeCard.style.padding = "20px";
+      newRecipeCard.style.backgroundColor = "black";
+      recipeResults.appendChild(newRecipeCard)
+    };
+
+    // const allRecipeResults = document.querySelectorAll('#recipelist div');
+
+    // console.log('Recipe Divs', allRecipeResults);
+
+    document.getElementById('results-page').style.display = 'flex';
+
+  }
+
+
+  goGetDataFromRecipeAPI();
+
+
+
+  // function generateRecipeCards(div) {
+  // div.forEach(createRecipeCard);
   // return json.title.includes(searchTerm) && json.ingredients.includes(searchTerm)
 }
 

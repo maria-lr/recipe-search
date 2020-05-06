@@ -31,7 +31,7 @@ button:hover {
   flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
-  background-color: #1874CD;
+  /* background-color: #1874CD; */
 }
 
 
@@ -46,7 +46,7 @@ body:not(.user-is-tabbing) textarea:focus {
 
 /* Desktop view */
 @media only screen and (min-width: 1025px) {
-  
+  /* Front page */
   h1 {
     font-size: 4rem;
   }
@@ -114,6 +114,15 @@ body:not(.user-is-tabbing) textarea:focus {
   font-size: 4rem;
 }
 }
+  /* Results Page */
+  .results-page-container {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+  }
 
 /* Tablet view */
 @media only screen and (min-width: 561px) and (max-width: 1024px) {
