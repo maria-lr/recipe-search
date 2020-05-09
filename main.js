@@ -22,7 +22,7 @@ searchButton.onclick = function (event) {
     return;
   }
 
-  searchButton.style.color = '#759677';
+  // searchButton.style.color = '#759677';
 
   let recipeResults = document.getElementById('recipelist')
   recipeResults.innerHTML = '';
@@ -67,24 +67,27 @@ searchButton.onclick = function (event) {
 
       let recipeTitle = document.createElement("h2");
       const recipeTitleWithoutLineBreaks = recipe.title.replace(/(\r\n|\n|\r)/gm, "");
+      recipeTitle.classList.add('recipe-title', 'recipe-text')
       recipeTitle.innerText = recipeTitleWithoutLineBreaks;
       newRecipeCard.appendChild(recipeTitle);
 
       let recipeIngredientsTitle = document.createElement("h3");
       recipeIngredientsTitle.innerText = "Ingredients";
-      recipeIngredientsTitle.classList.add('ingredients-title')
+      recipeIngredientsTitle.classList.add('ingredients-title', 'recipe-text')
       newRecipeCard.appendChild(recipeIngredientsTitle);
 
       let recipeIngredients = document.createElement("p");
+      recipeIngredients.classList.add('recipe-text')
       recipeIngredients.innerText = recipe.ingredients;
       newRecipeCard.appendChild(recipeIngredients);
 
       let recipeDirectionsTitle = document.createElement("h3");
-      recipeDirectionsTitle.classList.add('directions-title')
+      recipeDirectionsTitle.classList.add('directions-title', 'recipe-text')
       recipeDirectionsTitle.innerText = "Directions"
       newRecipeCard.appendChild(recipeDirectionsTitle);
 
       let recipeDirections = document.createElement("p");
+      recipeDirections.classList.add('recipe-text')
       recipeDirections.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
       newRecipeCard.appendChild(recipeDirections)
 
