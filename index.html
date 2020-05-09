@@ -3,7 +3,8 @@
 <head>
   <title>Recipe Search</title>
   <link href="style.css" type="text/css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Open+Sans&display=swap"
+    rel="stylesheet">
   <script src="main.js" defer></script>
   <script src="https://kit.fontawesome.com/bffe2b63f8.js" crossorigin="anonymous"></script>
 </head>
@@ -11,10 +12,15 @@
 <body>
   <section class='front-page-container'>
     <section class='fpitems-container'>
-      <h1>Show me </h1><br><br>
+      <h1 id="show-me">Show me </h1><br><br>
       <input id="searchbar" type="text" placeholder="beef"><br><br>
       <h1>recipes</h1><br><br>
       <button id="searchbutton" type="submit"><i class="fas fa-search"></i></button>
+      <section class="message" id="see-below">
+        <h2>See recipes below</h2>
+        <i class="fas fa-angle-down" id="caret"></i>
+      </section>
+
     </section>
   </section>
   <section class='results-page-container' id='results-page'>
