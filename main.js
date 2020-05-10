@@ -2,7 +2,7 @@ const searchButton = document.getElementById('searchbutton');
 const searchBar = document.getElementById('searchbar')
 
 
-// Trigger button on enter code from w3Schools:https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+// Can trigger the search button with the Enter key. Trigger button on enter code from w3Schools:https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
 
 // Execute a function when the user releases a key on the keyboard
 searchBar.addEventListener("keyup", function (event) {
@@ -17,13 +17,16 @@ searchBar.addEventListener("keyup", function (event) {
 
 
 searchButton.onclick = function (event) {
+
+  // Show the results page when search button is clicked.
   document.getElementById("see-below").style.visibility = "visible";
+
+  // Do not allow search on search button click if the searchbar is empty. 
   if (searchBar.value === "") {
     return;
   }
 
-  // searchButton.style.color = '#759677';
-
+  // On search click, clear the page of any previous results.
   let recipeResults = document.getElementById('recipelist')
   recipeResults.innerHTML = '';
 
@@ -33,6 +36,7 @@ searchButton.onclick = function (event) {
 
   console.log("What is my url?", url)
 
+  // Async-await data fetching from API. Linking up an API and converting the results to a readable format: JSON.
   async function goGetDataFromRecipeAPI() {
     const result = await fetch(url);
     const json = await result.json();
@@ -45,6 +49,7 @@ searchButton.onclick = function (event) {
       console.log('Picture', recipe.thumbnail)
       console.log('Ingredients', recipe.ingredients)
 
+      // For each recipe in the recipe array create a recipe card. (needto pass the recipe argument through forEach, the below function call and the function definition outside of this scope for it to work).
       createRecipeCard(recipe);
     })
 
@@ -59,13 +64,18 @@ searchButton.onclick = function (event) {
       console.log("What is recipe results?", recipeResults)
       recipeResults.appendChild(newRecipeCard);
 
+      // Create a new element (p, h2, img) for each part of the recipe card.
       let recipeImage = document.createElement("img");
       recipeImage.src = recipe.thumbnail;
+
+      // Add a class to the element you just created to style the new element.
       recipeImage.classList.add('recipe-image')
-      // append img to div you just made
+      // append img/element to the recipe card/div you just made.
       newRecipeCard.appendChild(recipeImage);
 
       let recipeTitle = document.createElement("h2");
+
+      // For some reason, the API response had line in random areas. The Replace method below uses a regex to find the line breaks in the first argument and replaces them with what's in the second argument: an empty string.
       const recipeTitleWithoutLineBreaks = recipe.title.replace(/(\r\n|\n|\r)/gm, "");
       recipeTitle.classList.add('recipe-title', 'recipe-text')
       recipeTitle.innerText = recipeTitleWithoutLineBreaks;
@@ -92,40 +102,34 @@ searchButton.onclick = function (event) {
       newRecipeCard.appendChild(recipeDirections)
 
     };
-
-    // const allRecipeResults = document.querySelectorAll('#recipelist div');
-
-    // console.log('Recipe Divs', allRecipeResults);
-
-
-
   }
 
-
+  // Run the encompassing function.
   goGetDataFromRecipeAPI();
 
-
-
-  // function generateRecipeCards(div) {
-  // div.forEach(createRecipeCard);
-  // return json.title.includes(searchTerm) && json.ingredients.includes(searchTerm)
 }
 
-
-
+// Grab the placeholder element and put random search suggestions inside. 
 const placeholder = document.getElementById('searchbar')
 const recipeType = ['chicken', 'tofu', 'bread', 'beef', 'carrot', 'banana', 'turkey', 'meatloaf', 'lasagna', 'salad', 'spinach', 'beer', 'rice', 'caramel', 'cookie'];
 
+
 function changePlaceholder() {
   const randomRecipe = recipeType[Math.floor(Math.random() * recipeType.length)];
+
+  // For input with a placeholder attribute, you need to use setAttribute to make changes. It will not work to try to make changes only to the searchbar element since Placeholder is an attribute of the input element.
   placeholder.setAttribute('placeholder', randomRecipe);
 
 };
 
+// Use setInterval to run the changePlaceholder function in the first argument and set the speed in the second argument.
 const textChangeInterval = setInterval(changePlaceholder, 1000);
 
+// Clear the searchbar of the placeholder when it's clicked.
 placeholder.onclick = function (event) {
   clearInterval(textChangeInterval);
+
+  // Take the placeholder attribute and set it to an empty string.
   placeholder.setAttribute('placeholder', '')
 }
 
@@ -138,12 +142,3 @@ function handleFirstTab(e) {
 }
 
 window.addEventListener('keydown', handleFirstTab);
-
-
-
-
-// function consoleLog() {
-//   console.log("We did a thing!")
-// }
-
-// setInterval(consoleLog, 1000);

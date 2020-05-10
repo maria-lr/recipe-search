@@ -56,7 +56,7 @@ Etc etc */
 }
 
 /* This is how you use the animation, applying it to a css class or ID
-You just use the 'animation-name' property, and you give it the name of the keyframes we definied above
+You just use the 'animation-name' property, and you give it the name of the keyframes we defined above
 Other properties here are self explanatory */
 #caret {
     animation-name: bouncyAnimation;
@@ -232,6 +232,10 @@ body:not(.user-is-tabbing) textarea:focus {
     width: 30%;
   }
 
+  .message {
+    width: 25%;
+  }
+
   #searchbar {
     font-family: 'Jost', sans-serif;
     font-weight: 500;
@@ -344,13 +348,18 @@ body:not(.user-is-tabbing) textarea:focus {
   .message {
     width: 70%;
     margin-bottom: 10rem;
+    color: whitesmoke;
+  }
+
+  #caret {
+    color: whitesmoke;
   }
 
   #searchbar {
     font-family: 'Jost', sans-serif;
     font-weight: 500;
     font-size: 4rem;
-    color: black;
+    color: whitesmoke;
     background-color: rgba(0, 0, 0, 0);
     border-bottom: 0.25rem solid black;
     width: 16rem;
