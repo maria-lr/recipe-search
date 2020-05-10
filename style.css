@@ -42,14 +42,6 @@ button:hover {
   animation-timing-function: linear;
 } */
 
-.message {
-  width: 30%;
-  height: 10%;
-  visibility: hidden;
-  font-size: 3rem;
-  transition: 1s 
-}
-
 
 /* Defining animation in CSS. You can copy any paste this!
 What it says is: 
@@ -71,16 +63,47 @@ Other properties here are self explanatory */
     animation-duration:1.4s;
     animation-iteration-count:infinite;
     animation-timing-function:linear;
+    padding: 1rem;
+    margin-bottom: 2rem;
 }
 
 .front-page-container {
+  background-image: url(./images/recipe-bg.jpg);
+  background-size: cover;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
   height: 100vh;
   width: 100vw;
   /* background-color: #1874CD; */
+}
+
+.fpitems-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: left; */
+  flex-wrap: wrap;
+  padding: 3.33rem;
+}
+
+.message {
+  width: 30%;
+  height: 10%;
+  visibility: hidden;
+  font-size: 3rem;
+  transition: 1s;
+  text-align: center;
+  margin-bottom: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.see-recipes {
+  padding: 1.3rem;
 }
 
 .recipe-image {
@@ -119,6 +142,16 @@ Other properties here are self explanatory */
   margin-top: 1.33rem;
   margin-bottom: 1.33rem;
   overflow: hidden;
+}
+
+/* Results Page */
+.results-page-container {
+  display: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
 }
 
 button {
@@ -182,15 +215,7 @@ body:not(.user-is-tabbing) textarea:focus {
     font-size: 1rem;
   }
 
-  .front-page-container {
-    background-image: url(./images/recipe-bg.jpg);
-    background-size: cover;
-  }
-  
   .fpitems-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     width: 80%;
     text-align: center;
   }
@@ -220,17 +245,11 @@ body:not(.user-is-tabbing) textarea:focus {
     margin-right: 1.5rem;
   }
 
-
-}
-  /* Results Page */
-  .results-page-container {
-    display: none;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100vh;
-    width: 100vw;
-    background-color: white;
+  #caret {
+    padding: 1.4rem
   }
+}
+
 
 /* Tablet view */
 @media only screen and (min-width: 561px) and (max-width: 1024px) {
@@ -251,11 +270,6 @@ body:not(.user-is-tabbing) textarea:focus {
   }
 
   .fpitems-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    flex-wrap: wrap;
     width: 70%;
   }
 
@@ -269,6 +283,10 @@ body:not(.user-is-tabbing) textarea:focus {
 
   .recipe-card {
     width: 46%;
+  }
+
+  .message {
+    margin-bottom: 10rem;
   }
 
   #searchbar {
@@ -305,16 +323,8 @@ body:not(.user-is-tabbing) textarea:focus {
   p {
     font-size: 1rem;
   }
-  
-  .front-page-container {
-    background-image: url(./images/recipe-bg.jpg);
-    background-size: cover;
-  }
 
   .fpitems-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     width: 80%;
     text-align: center;
   }
@@ -324,11 +334,16 @@ body:not(.user-is-tabbing) textarea:focus {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    width: 75vw; 
+    width: 90vw; 
   }
 
   .recipe-card {
     width: 100%;
+  }
+
+  .message {
+    width: 70%;
+    margin-bottom: 10rem;
   }
 
   #searchbar {
@@ -344,5 +359,6 @@ body:not(.user-is-tabbing) textarea:focus {
     margin-bottom: 0.5rem;
     margin-right: 1.5rem;
   }
+
 
 }
