@@ -233,7 +233,7 @@ body:not(.user-is-tabbing) textarea:focus {
   }
 
   .message {
-    width: 25%;
+    width: 23%;
   }
 
   #searchbar {
